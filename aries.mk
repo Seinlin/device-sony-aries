@@ -81,6 +81,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     ro.usb.pid_suffix=1BB
 
+# for Gecko to support bluedroid stack
+PRODUCT_PACKAGES += \
+    bluetooth.default
+
 # Enable virtual home button for b2g
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.moz.has_home_button=0
