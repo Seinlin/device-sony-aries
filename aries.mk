@@ -20,7 +20,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 $(call inherit-product, device/sony/shinano/device.mk)
-$(call inherit-product, vendor/sony/aries/aries-vendor.mk)
+#$(call inherit-product, vendor/sony/aries/aries-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 $(call inherit-product-if-exists, prebuilts/chromium/webview_prebuilt.mk)
@@ -89,9 +89,11 @@ PRODUCT_COPY_FILES += \
     device/sony/aries/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
     device/sony/aries/volume.cfg:system/etc/volume.cfg
 
-vendor_binary_files := $(strip $(wildcard vendor/sony/shinano/shinano-partial.mk))
-ifeq ($(vendor_binary_files),)
-  $(error Vendor binary files are not found. Please download from: \
-  http://dl-developer.sonymobile.com/eula/SW_binaries_for_Xperia_AOSP_Lollipop_MR1_v5_EULA.html, \
-  then extract in B2G dir and try again.)
-endif
+$(call inherit-product-if-exists, vendor/sony/aries/aries-vendor-blobs.mk)
+
+#vendor_binary_files := $(strip $(wildcard vendor/sony/shinano/shinano-partial.mk))
+#ifeq ($(vendor_binary_files),)
+#  $(error Vendor binary files are not found. Please download from: \
+#  http://dl-developer.sonymobile.com/eula/SW_binaries_for_Xperia_AOSP_Lollipop_MR1_v5_EULA.html, \
+#  then extract in B2G dir and try again.)
+#endif
