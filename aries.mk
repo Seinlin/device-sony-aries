@@ -81,25 +81,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     ro.usb.pid_suffix=1BB
 
-# for Gecko to support bluedroid stack
-PRODUCT_PACKAGES += \
-    bluetooth.default
-
-ENABLE_LIBRECOVERY := true
-
-# Enable virtual home button for b2g
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.moz.has_home_button=0
-
-PRODUCT_COPY_FILES += \
-    device/sony/aries/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
-    device/sony/aries/volume.cfg:system/etc/volume.cfg
-
 $(call inherit-product-if-exists, vendor/sony/aries/aries-vendor-blobs.mk)
-
-#vendor_binary_files := $(strip $(wildcard vendor/sony/shinano/shinano-partial.mk))
-#ifeq ($(vendor_binary_files),)
-#  $(error Vendor binary files are not found. Please download from: \
-#  http://dl-developer.sonymobile.com/eula/SW_binaries_for_Xperia_AOSP_Lollipop_MR1_v5_EULA.html, \
-#  then extract in B2G dir and try again.)
-#endif
