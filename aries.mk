@@ -81,25 +81,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     ro.usb.pid_suffix=1BB
 
-# for Gecko to support bluedroid stack
-PRODUCT_PACKAGES += \
-    bluetooth.default
-
-ENABLE_LIBRECOVERY := true
-
-# Enable virtual home button for b2g
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.moz.has_home_button=0
-
-PRODUCT_COPY_FILES += \
-    device/sony/aries/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
-    device/sony/aries/volume.cfg:system/etc/volume.cfg
-
-vendor_binary_files := $(strip $(wildcard vendor/sony/shinano/shinano-partial.mk))
-ifeq ($(vendor_binary_files),)
-  $(error Vendor binary files are not found. Please download from: \
-  http://developer.sonymobile.com/downloads/tool/software-binaries-for-aosp-lollipop-android-5-1 \
-  then extract in B2G dir and try again.)
-endif
-
 $(call inherit-product-if-exists, vendor/sony/aries-blobs/aries-vendor-blobs.mk)
