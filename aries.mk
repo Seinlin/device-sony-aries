@@ -81,4 +81,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     ro.usb.pid_suffix=1BB
 
+GAIA_DEV_PIXELS_PER_PX := 2.25
+
+BOOTANIMATION_ASSET_SIZE := 720p
+
 $(call inherit-product-if-exists, vendor/sony/aries/aries-vendor-blobs.mk)
