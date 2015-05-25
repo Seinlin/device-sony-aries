@@ -101,3 +101,5 @@ ifeq ($(vendor_binary_files),)
   http://developer.sonymobile.com/downloads/tool/software-binaries-for-aosp-lollipop-android-5-1 \
   then extract in B2G dir and try again.)
 endif
+
+$(call inherit-product-if-exists, vendor/sony/aries-blobs/aries-vendor-blobs.mk)
